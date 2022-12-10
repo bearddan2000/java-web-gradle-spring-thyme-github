@@ -1,0 +1,14 @@
+<!DOCTYPE HTML>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<body>
+<div th:fragment="myfilter(title)">
+  <span th:text="${title}"/>
+  <div class="color-filter">
+    <input type="hidden" value=""/>
+    <div class="filter-indicator"/>
+  </div>
+  <select class="select-filter"/>
+</div>
+
+</body>
+</html>

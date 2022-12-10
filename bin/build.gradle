@@ -1,0 +1,124 @@
+buildscript {
+    ext {
+        springBootVersion = '2.4.2'
+        serenityCoreVersion = '3.2.0'
+    }
+    repositories {
+        jcenter()
+        mavenCentral()
+    }
+    dependencies {
+      classpath("net.serenity-bdd:serenity-gradle-plugin:${serenityCoreVersion}")
+      classpath("net.serenity-bdd:serenity-single-page-report:${serenityCoreVersion}")
+      classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
+    }
+}
+
+plugins {
+  id 'java'
+  id 'se.thinkcode.cucumber-runner' version '0.0.8'
+}
+
+apply plugin: 'java'
+apply plugin: 'org.springframework.boot'
+apply plugin: 'io.spring.dependency-management'
+apply plugin: 'net.serenity-bdd.aggregator'
+
+defaultTasks 'clean', 'test', 'aggregate'
+
+jar {
+    baseName = 'boot-gradle'
+    version = '0.0.1-SNAPSHOT'
+}
+
+repositories {
+    jcenter()
+    mavenCentral()
+}
+
+sourceCompatibility = 11
+targetCompatibility = 11
+
+ext {
+    springVersion = '5.0.1.RELEASE'
+    serenityScreebplayVersion = '3.1.15'
+    serenityCucumberVersion = '3.1.15'
+}
+
+dependencies {
+ // spring
+    implementation 'org.springframework.boot:spring-boot-starter-web'
+    implementation 'org.springframework.boot:spring-boot-starter-thymeleaf'
+    testImplementation 'org.springframework.boot:spring-boot-starter-test'
+// databinding
+    implementation  'com.fasterxml.jackson.dataformat:jackson-dataformat-csv:2.9.9'
+    implementation 'org.projectlombok:lombok:1.18.8'
+    annotationProcessor 'org.projectlombok:lombok:1.18.8'
+// test - junit5
+    testImplementation platform("org.junit:junit-bom:5.8.1"),
+      "org.junit.vintage:junit-vintage-engine",
+      "org.junit.platform:junit-platform-launcher",
+      "org.junit.jupiter:junit-jupiter-engine"
+// test - serenity, cucumber
+    testImplementation "net.serenity-bdd:serenity-screenplay:${serenityScreebplayVersion}",
+      "net.serenity-bdd:serenity-cucumber:${serenityCucumberVersion}",
+      "net.serenity-bdd:serenity-junit5:${serenityCucumberVersion}",
+      "net.serenity-bdd:serenity-spring:${serenityCucumberVersion}"
+}
+
+
+test {
+    reports {
+        html.enabled = true
+    }
+
+    // Enable JUnit 5 (Gradle 4.6+).
+    useJUnitPlatform()
+
+    // Always run tests, even when nothing changed.
+    //dependsOn 'cleanTest'
+
+    // Show test results.
+    testLogging {
+        events "passed", "skipped", "failed"
+    }
+}
+
+serenity {
+    // Specify the root package of any JUnit acceptance tests to appear in the Serenity report
+    testRoot = "starter"
+    reports = ["single-page-html"]
+    // Specify the root directory of any Cucumber feature files
+    requirementsDir = "src/test/resources/features"
+
+}
+
+configurations {
+    cucumberRuntime {
+        extendsFrom testImplementation
+    }
+}
+
+task cucumberCli() {
+    dependsOn assemble, testClasses
+    doLast {
+        javaexec {
+            main = "io.cucumber.core.cli.Main"
+            classpath = configurations.cucumberRuntime + sourceSets.main.output + sourceSets.test.output
+            args = [
+              '--plugin', 'pretty',
+              '--plugin', 'html:target/cucumber-report.html',
+              '--glue', 'src/test/resources']
+        }
+    }
+}
+cucumber {
+    main = "io.cucumber.core.cli.Main"
+}
+springBoot {
+    mainClass = "example.Main"
+}
+
+gradle.startParameter.continueOnFailure = true
+
+test.finalizedBy(aggregate)

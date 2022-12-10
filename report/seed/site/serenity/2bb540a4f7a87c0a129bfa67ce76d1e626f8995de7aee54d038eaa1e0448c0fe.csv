@@ -1,0 +1,4 @@
+"Story","Title","Result","Date","Stability","Duration (s)"
+"Fetch API test","Get response contains description","FAILURE","2022-07-27T03:00:34.197257Z[Etc/UTC]","0.0","0.96"
+"Fetch API test","Get response contains url","FAILURE","2022-07-27T03:00:35.468939Z[Etc/UTC]","0.0","0.26"
+"Fetch API test","Get response contains name","FAILURE","2022-07-27T03:00:35.746253Z[Etc/UTC]","0.0","0.21"

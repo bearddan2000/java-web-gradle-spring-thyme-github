@@ -1,0 +1,23 @@
+body {
+  margin: 4px;
+}
+
+.color-id {
+  content: "";
+  display: inline-block;
+  width: 15px;
+  height: 15px;
+  margin-right: 5px;
+}
+
+.filter-ibndicator-color {
+  content: "";
+  display: inline-block;
+  width: 15px;
+  height: 15px;
+  margin-right: 5px;
+}
+
+.box {
+  text-transform: capitalize;
+}

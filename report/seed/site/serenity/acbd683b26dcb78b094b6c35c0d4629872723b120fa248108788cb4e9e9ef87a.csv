@@ -1,0 +1,5 @@
+"Story","Title","Result","Date","Stability","Duration (s)"
+"Helper test","Get response count contains","FAILURE","2022-07-27T03:00:37.209928Z[Etc/UTC]","0.0","0.15"
+"Helper test","Get count greater than zero","FAILURE","2022-07-27T03:00:37.370575Z[Etc/UTC]","0.0","0.18"
+"Helper test","Get response length","ERROR","2022-07-27T03:00:37.56818Z[Etc/UTC]","0.0","0.14"
+"Helper test","Get response IS not null","FAILURE","2022-07-27T03:00:37.737654Z[Etc/UTC]","0.0","0.2"

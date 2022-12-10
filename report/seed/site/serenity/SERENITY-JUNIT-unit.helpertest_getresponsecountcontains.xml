@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><testsuite errors="1" failures="3" name="unit.HelperTest" skipped="0" tests="4" time="0.68" timestamp="2022-07-27 03:00:37"><testcase classname="unit.HelperTest" name="Get response count contains"><failure message="&#10;Expecting actual not to be null" type="java.lang.AssertionError">
+Expecting actual not to be null</failure><system-err>
+Expecting actual not to be null
+unit.HelperTest.lambda$getResponseCountContains$1(HelperTest.java:30)
+unit.HelperTest.getResponseCountContains(HelperTest.java:29)
+worker.org.gradle.process.internal.worker.GradleWorkerMain.run(GradleWorkerMain.java:69)
+worker.org.gradle.process.internal.worker.GradleWorkerMain.main(GradleWorkerMain.java:74)
+</system-err></testcase><testcase classname="unit.HelperTest" name="Get count greater than zero"><failure message="&#10;Expecting:&#10; &lt;0&gt;&#10;to be greater than:&#10; &lt;1&gt; " type="java.lang.AssertionError">
+Expecting:
+ &lt;0&gt;
+to be greater than:
+ &lt;1&gt; </failure><system-err>
+Expecting:
+ &lt;0&gt;
+to be greater than:
+ &lt;1&gt; 
+unit.HelperTest.lambda$getCountGreaterThanZero$2(HelperTest.java:40)
+unit.HelperTest.getCountGreaterThanZero(HelperTest.java:39)
+worker.org.gradle.process.internal.worker.GradleWorkerMain.run(GradleWorkerMain.java:69)
+worker.org.gradle.process.internal.worker.GradleWorkerMain.main(GradleWorkerMain.java:74)
+</system-err></testcase><testcase classname="unit.HelperTest" name="Get response length"><error type="java.lang.NullPointerException"/><system-err>null
+unit.HelperTest.getResponseLength(HelperTest.java:17)
+worker.org.gradle.process.internal.worker.GradleWorkerMain.run(GradleWorkerMain.java:69)
+worker.org.gradle.process.internal.worker.GradleWorkerMain.main(GradleWorkerMain.java:74)
+</system-err></testcase><testcase classname="unit.HelperTest" name="Get response IS not null"><failure message="&#10;Expecting actual not to be null" type="java.lang.AssertionError">
+Expecting actual not to be null</failure><system-err>
+Expecting actual not to be null
+unit.HelperTest.lambda$getResponseISNotNull$3(HelperTest.java:49)
+unit.HelperTest.getResponseISNotNull(HelperTest.java:48)
+worker.org.gradle.process.internal.worker.GradleWorkerMain.run(GradleWorkerMain.java:69)
+worker.org.gradle.process.internal.worker.GradleWorkerMain.main(GradleWorkerMain.java:74)
+</system-err></testcase></testsuite>
